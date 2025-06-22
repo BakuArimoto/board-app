@@ -5,5 +5,9 @@
         <p>{{ message.message }}</p>
     {% endfor %}
 {% endif %}
-ホーム画面です。
+<form method="POST">
+{% csrf_token %}
+{{ login_form.as_p }}
+<input type="submit" value="ログイン">
+</form>
 {% endblock %}

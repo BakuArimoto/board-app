@@ -12,7 +12,7 @@ class Theme(models.Model):
         User, on_delete=models.CASCADE,
     )
     
-    objects: ThemeManager = ThemeManager()
+    objects = ThemeManager()
     
     class Meta:
         db_table = 'theme'
@@ -31,7 +31,7 @@ class Comment(models.Model):
         Theme, on_delete=models.CASCADE,
     )
     
-    objects: CommentManager = CommentManager()
+    objects = CommentManager()
     
     class Meta:
         db_table = 'comment'

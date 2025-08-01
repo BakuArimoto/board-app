@@ -8,7 +8,10 @@ User = get_user_model()
 class RegistForm(forms.ModelForm):
     
     confirm_password = forms.CharField(
-        label='パスワード再入力', widget=forms.PasswordInput()
+        label='パスワード再入力', 
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'パスワード再入力'
+        })
     )
     
     class Meta():
@@ -21,10 +24,19 @@ class RegistForm(forms.ModelForm):
             'password': 'パスワード',
         }
         widgets = {
-            'age': forms.NumberInput(attrs={
-                'min': 0
+            'username': forms.TextInput(attrs={
+                'placeholder': '名前'
             }),
-            'password': forms.PasswordInput()
+            'age': forms.NumberInput(attrs={
+                'min': 0,
+                'placeholder': '年齢'
+            }),
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'メールアドレス'
+            }),
+            'password': forms.PasswordInput(attrs={
+                'placeholder': 'パスワード'
+            })
         }
     
     def clean(self):
@@ -50,9 +62,14 @@ class UserActivateForm(forms.Form):
     token = forms.CharField(widget=forms.HiddenInput())
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label="メールアドレス")
-    password = forms.CharField(label="パスワード", widget=forms.PasswordInput())
-    
+    email = forms.EmailField(label="メールアドレス", widget=forms.EmailInput(attrs={
+        'placeholder': 'メールアドレス'
+    }))
+    password = forms.CharField(label="パスワード", widget=forms.PasswordInput(attrs={
+        'placeholder': 'パスワード'
+    }))
+   
+
 class UserEditForm(forms.ModelForm):
     
     class Meta:

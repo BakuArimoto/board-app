@@ -1,13 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base_regist_signup.html' %}
+{% load static %}
 {% block content %}
-{% if messages %}
-    {% for message in messages %}
-        <p>{{ message.message }}</p>
-    {% endfor %}
-{% endif %}
-<form method="POST">
-{% csrf_token %}
-{{ login_form.as_p }}
-<input type="submit" value="ログイン">
-</form>
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">ログイン</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="{{ login_form.email.id_for_label }}"><i class="zmdi zmdi-email"></i></label>
+                                {{ login_form.email }}
+                                {{ login_form.email.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ login_form.password.id_for_label }}"><i class="zmdi zmdi-lock"></i></label>
+                                {{ login_form.password }}
+                                {{ login_form.password.errors }}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="ログイン"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signin-image">
+                        <figure><img src="{% static 'regist_signup/images/login.jpg' %}" alt=""></figure>
+                        <a href="{% url 'accounts:regist' %}" class="signup-image-link">新規登録はこちら</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}

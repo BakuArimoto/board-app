@@ -1,8 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'base_regist_signup.html' %}
+{% load static %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ regist_form.as_p }}
-    <input type="submit" value="ユーザ登録">
-</form>
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">ユーザ登録</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="{{ regist_form.username.id_for_label }}"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {{ regist_form.username }}
+                                {{ regist_form.username.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ regist_form.email.id_for_label }}"><i class="zmdi zmdi-email"></i></label>
+                                {{ regist_form.email }}
+                                {{ regist_form.email.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ regist_form.password.id_for_label }}"><i class="zmdi zmdi-lock"></i></label>
+                                {{ regist_form.password }}
+                                {{ regist_form.password.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ regist_form.confirm_password.id_for_label }}"><i class="zmdi zmdi-lock-outline"></i></label>
+                                {{ regist_form.confirm_password }}
+                                {{ regist_form.confirm_password.errors }}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="登録"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'regist_signup/images/regist.jpg' %}" alt=""></figure>
+                        <a href="{% url 'accounts:login' %}" class="signup-image-link">既に登録している人はこちら（ログイン）</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}

@@ -1,9 +1,73 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-{% if messages %}
-    {% for message in messages %}
-        <p>{{ message.message }}</p>
-    {% endfor %}
-{% endif %}
-ホーム画面です。
+<!-- home Header-->
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container px-5">
+            <h1 class="masthead-heading mb-0">チルの掲示板</h1>
+            <h2 class="masthead-subheading mb-0">チルを語り合おう！</h2>
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">もっと知りたい！</a>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+<!-- Content section 1-->
+<section id="scroll">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'base/assets/img/01.jpg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Meet your best friend, again.</h2>
+                    <p>ここは、あなたのかけがえのない家族――チルの魅力を存分に語れる場所。毎日見ている姿も、他の誰かにとっては特別な一枚。そんな「うちの子」の魅力を、世界に届けよう。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Content section 2-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'base/assets/img/02.jpg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">One place, countless tails.</h2>
+                    <p>寝顔、ごはんタイム、おてんばな瞬間…チルのしぐさには、毎日がドラマだ。
+ードでも、誰かの癒やしになる。
+たちの心がつながる掲示板。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Content section 3-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'base/assets/img/03.jpg' %}" alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Share your joy. Make someone smile.</h2>
+                    <p>愛くるしい一枚が、今日の誰かを笑顔にするかもしれない。
+みんなと共有しよう。チルが世界のアイドルになる</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-black">
+    <div class="container px-5"><p class="m-0 text-center text-white small">チルを愛する全ての人たちへ</p></div>
+</footer>
 {% endblock %}

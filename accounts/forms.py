@@ -40,6 +40,7 @@ class RegistForm(forms.ModelForm):
         }
     
     def clean(self):
+        print("cleanが呼ばれました。")
         cleaned_data = super().clean()
         password = cleaned_data['password']
         confirm_password = cleaned_data['confirm_password']
@@ -47,8 +48,11 @@ class RegistForm(forms.ModelForm):
             self.add_error('password', 'パスワードが一致しません')
         try:
             validate_password(password, self.instance)
+            print("パスワードが有効です")
         except ValidationError as e:
+            print("パスワードが無効です")
             self.add_error('password', e)
+        print("検証が終わりました。cleaned_dataを返します。")
         return cleaned_data
 
     def save(self, commit=False):

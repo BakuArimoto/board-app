@@ -1566,7 +1566,8 @@ progress {
   }
   .g-xl-5,
   .gy-xl-5 {
-    --bs-gutter-y: 3rem;
+    --bs-gutter-y: 3remp: 0px;
+    padding-top: 15px;
   }
 }
 @media (min-width: 1400px) {
@@ -5379,6 +5380,20 @@ textarea.form-control-lg {
 }
 .modal-footer > * {
   margin: calc(var(--bs-modal-footer-gap) * 0.5);
+}
+
+/* ナビゲーションバーとの重なりを解消するためのスタイル */
+.main-content {
+  margin-top: 80px; /* ナビゲーションバーの高さ + 余白 */
+  padding-top: 20px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 70px;
+    padding-top: 15px;
+  }
 }
 
 @media (min-width: 576px) {

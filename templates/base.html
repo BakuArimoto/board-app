@@ -35,6 +35,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'boards:list_themes' %}">掲示板一覧</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'boards:create_theme' %}">掲示板作成</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">ログアウト</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:edit' %}">ユーザー情報更新</a></li>

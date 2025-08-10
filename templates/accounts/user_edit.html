@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if messages %}
-    {% for message in messages %}
-        <p>{{ message.message }}</p>
-    {% endfor %}
-{% endif %}
-<form method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-{{ user_edit_form.as_p }}
-<input type="submit" value="更新">
-</form>
-<a href="{% url 'accounts:change_password' %}">パスワード変更</a>
+<div class="container main-content">
+    <h3>ユーザー情報編集画面</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_edit_form.as_p }}
+        <input type="submit" value="更新">
+    </form>
+    <a href="{% url 'accounts:change_password' %}">パスワード変更</a>
+</div>
 {% endblock %}

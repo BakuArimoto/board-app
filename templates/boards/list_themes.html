@@ -1,37 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>掲示板一覧画面</h3>
-<p>
-    <a class="navbar-brand" href="{% url 'boards:create_theme' %}">掲示板を作成</a>
-</p>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>タイトル</th>
-            <th>作成者</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for theme in themes %}
+<div class="container main-content">
+    <h3>掲示板一覧画面</h3>
+    <div class="mb-3">
+        <a class="btn btn-primary" href="{% url 'boards:create_theme' %}">
+            <i class="fas fa-plus"></i> 掲示板を作成
+        </a>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
             <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>
-                    <a href="{% url 'boards:post_comment' theme_id=theme.id %}">
-                    {{ theme.title }}
-                    </a>
-                </td>
-                <td>
-                    {% if theme.user.id == user.id %}
-                        <a href="{% url 'boards:edit_theme' pk=theme.id %}">
-                            {{ theme.user }}
-                        </a>
-                    {% else %}
-                        {{ theme.user }}
-                    {% endif %}
-                </td>
+                <th>#</th>
+                <th>タイトル</th>
+                <th>作成者</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for theme in themes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <a href="{% url 'boards:post_comment' theme_id=theme.id %}">
+                        {{ theme.title }}
+                        </a>
+                    </td>
+                    <td>
+                        {% if theme.user.id == user.id %}
+                            <a href="{% url 'boards:edit_theme' pk=theme.id %}">
+                                {{ theme.user }}
+                            </a>
+                        {% else %}
+                            {{ theme.user }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
